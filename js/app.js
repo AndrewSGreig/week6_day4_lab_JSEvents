@@ -3,10 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const handleFormSubmit = function(event){
     event.preventDefault();
-    debugger;
     console.log('in the function');
-    const resultParagraph = document.querySelector('#reading-list');
-    resultParagraph.textContent += `Your book Title: ${event.target.title.value}, Author: ${event.target.author.value}, Category: ${event.target.category.value}`;
+    const resultList = document.querySelector('#reading-list');
+
+    const newLi = document.createElement('li');
+    newLi.textContent = `Your book Title: ${event.target.title.value}, Author: ${event.target.author.value}, Category: ${event.target.category.value}`;
+    resultList.appendChild(newLi);
+    // resultParagraph.textContent += `Your book Title: ${event.target.title.value}, Author: ${event.target.author.value}, Category: ${event.target.category.value}`;
 
     form.reset();
 
@@ -14,5 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const form = document.querySelector('#new-item-form');
   form.addEventListener('submit', handleFormSubmit);
+
+  const handleDeleteAllButtonClick = function(){
+    const readingList = document.querySelector('#reading-list');
+    while (readingList.firstChild) readingList.removeChild(readingList.firstChild);
+
+  }
+  const button = document.querySelector('#deleteAll');
+  button.addEventListener('click', handleDeleteAllButtonClick);
+
   console.log('at the bottom');
 });

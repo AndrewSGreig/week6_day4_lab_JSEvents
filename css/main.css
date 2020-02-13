@@ -1,3 +1,13 @@
 body {
   font-family: Palatino;
 }
+
+#reading-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#reading-list li{
+  list-style: armenian;
+  padding: 12px;
+}
